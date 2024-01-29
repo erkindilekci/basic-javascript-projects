@@ -1,10 +1,12 @@
 let page = 1;
 
-const itemContainer = document.querySelector('.item-container');
-const loadMoreBtn = document.querySelector('.btn-load');
+const itemContainer = document.querySelector(".item-container");
+const loadMoreBtn = document.querySelector(".btn-load");
 
 const getData = async function (page) {
-    const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}`);
+    const response = await fetch(
+        `https://rickandmortyapi.com/api/character?page=${page}`
+    );
 
     if (!response) return;
 
@@ -24,8 +26,8 @@ const createItem = function (obj) {
 
 const parseData = async function (page) {
     const data = await getData(page);
-    const list = data.results.map(createItem).join('');
-    itemContainer.insertAdjacentHTML('beforeend', list);
+    const list = data.results.map(createItem).join("");
+    itemContainer.insertAdjacentHTML("beforeend", list);
 };
 
 parseData(page);
@@ -36,8 +38,7 @@ const loadNextPage = function () {
     }
 };
 
-loadMoreBtn.addEventListener('click', loadNextPage);
-
-window.addEventListener('scroll', () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 400) loadNextPage();
+window.addEventListener("scroll", () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 400)
+        loadNextPage();
 });
