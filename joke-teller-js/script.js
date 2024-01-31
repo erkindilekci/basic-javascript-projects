@@ -5,7 +5,7 @@ const toggleButtonVisibility = () => button.disabled = !button.disabled;
 
 const speech = function (text) {
     VoiceRSS.speech({
-        key: API_KEY,
+        key: 'e985f868e96c46d9b0789c3855350152',
         src: text,
         hl: 'en-US',
         r: 2,
